@@ -1,26 +1,42 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import { Header } from './components/header/header';
+import { Footer } from './components/footer/footer';
+
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HomePage } from './pages/home-page/home-page';
+import { AboutPage } from './pages/about-page/about-page';
+import { SchoolPage } from './pages/school-page/school-page';
+import { TravelsPage } from './pages/travels-page/travels-page';
+import { TrainingPage } from './pages/training-page/training-page';
+import { NewbieBlockPage } from './pages/school-page/newbie-block-page/newbie-block-page';
+import { BasementBlockPage } from './pages/school-page/basement-block-page/basement-block-page';
+import { AdvancedBlockPage } from './pages/school-page/advanced-block-page/advanced-block-page';
+import { RescueBlockPage } from './pages/school-page/rescue-block-page/rescue-block-page';
+import { SnowIceBlockPage } from './pages/school-page/snow-ice-block-page/snow-ice-block-page';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Router>
+                <Header />
+                <Routes>
+                    <Route index element={<HomePage />} />
+                    <Route path="/about" element={<AboutPage />} />
+                    <Route path="/training" element={<TrainingPage />} />
+                    <Route path="/travels" element={<TravelsPage />} />
+                    <Route path="/school" element={<SchoolPage />} />
+                    <Route path="/newbie" element={<NewbieBlockPage />} />
+                    <Route path="/basement" element={<BasementBlockPage />} />
+                    <Route path="/advanced" element={<AdvancedBlockPage />} />
+                    <Route path="/snow_and_ice" element={<SnowIceBlockPage />} />
+                    <Route path="/rescue" element={<RescueBlockPage />} />
+                    <Route path="*" element={<HomePage />} />
+                </Routes>
+                <Footer />
+            </Router>
+        </div>
+    );
 }
 
 export default App;
