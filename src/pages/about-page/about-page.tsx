@@ -1,22 +1,22 @@
 export const AboutPage = () => {
     return (
-        <section id="wrapper">
+        <section id='wrapper'>
             <header>
-                <div className="inner">
+                <div className='inner'>
                     <h2>О клубе</h2>
                 </div>
             </header>
 
-            <div className="wrapper">
-                <div className="inner">
+            <div className='wrapper'>
+                <div className='inner'>
                     <p>
                         Клуб создан 1 ноября 2012 года для совместных тренировок, проведения совместных сборов ,а так же
                         для участия в соревнованиях по альпинизму и скалолазанию
                     </p>
 
-                    <h3 className="major">Мы Клуб Альпинистов и Скалолазов Black Ice:</h3>
-                    <div className="row">
-                        <div className="col-12">
+                    <h3 className='major'>Мы Клуб Альпинистов и Скалолазов Black Ice:</h3>
+                    <div className='row'>
+                        <div className='col-12'>
                             <ul>
                                 <li>Самый большой клуб по численности в Москве и один из сильнейших.</li>
                                 <li>Постоянно проводим как коммерческие, так и спортивные выезды.</li>
@@ -26,9 +26,9 @@ export const AboutPage = () => {
                         </div>
                     </div>
 
-                    <h3 className="major">Основные направления нашей деятельности:</h3>
-                    <div className="row">
-                        <div className="col-12">
+                    <h3 className='major'>Основные направления нашей деятельности:</h3>
+                    <div className='row'>
+                        <div className='col-12'>
                             <ul>
                                 <li>Школа альпинизма</li>
                                 <li>Школа скалолазания</li>
@@ -37,9 +37,9 @@ export const AboutPage = () => {
                         </div>
                     </div>
 
-                    <h3 className="major">С нами ты сможешь:</h3>
-                    <div className="row">
-                        <div className="col-12">
+                    <h3 className='major'>С нами ты сможешь:</h3>
+                    <div className='row'>
+                        <div className='col-12'>
                             <ul>
                                 <li>Взойти на Эльбрус, Казбек, пик Ленина, Хан Тенгри и другие известные вершины.</li>
                                 <li>Стать настоящим альпинистом или скалолазом.</li>

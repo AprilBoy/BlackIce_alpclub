@@ -7,6 +7,11 @@ module.exports = {
                 printWidth: 120,
                 tabWidth: 4,
                 semi: true,
+                jsxSingleQuote: true,
+                bracketSpacing: true,
+                bracketSameLine: true,
+                arrowParens: 'always',
+                singleAttributePerLine: true
             },
         },
         {

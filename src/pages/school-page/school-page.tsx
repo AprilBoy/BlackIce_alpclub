@@ -2,14 +2,14 @@ import { Link, Outlet } from 'react-router-dom';
 
 export const SchoolPage = () => {
     return (
-        <section id="wrapper">
+        <section id='wrapper'>
             <header>
-                <div className="inner">
+                <div className='inner'>
                     <h2>Школа Альпинизма</h2>
                 </div>
             </header>
-            <div className="wrapper">
-                <div className="inner">
+            <div className='wrapper'>
+                <div className='inner'>
                     <p>
                         Приглашаем на обучение всех, кто мечтает ходить в горы, но не знает с чего начать. Мы
                         подготовили практический курс, состоящий из пяти частей, пройдя которые вы сможете ходить в горы
@@ -21,15 +21,15 @@ export const SchoolPage = () => {
                     </p>
 
                     <p>
-                        <a href="https://clc.am/3-6KHw">
+                        <a href='https://clc.am/3-6KHw'>
                             <strong>Регистрация на курс</strong>
                         </a>
                     </p>
 
                     <br />
-                    <h3 className="major">Ближайшие даты:</h3>
-                    <div className="row">
-                        <div className="col-12">
+                    <h3 className='major'>Ближайшие даты:</h3>
+                    <div className='row'>
+                        <div className='col-12'>
                             <ul>
                                 <li>20 ноября 2022</li>
                                 <li>4 декабря 2022</li>
@@ -38,60 +38,60 @@ export const SchoolPage = () => {
                         </div>
                     </div>
                     <br />
-                    <h3 className="major">учебные блоки</h3>
+                    <h3 className='major'>учебные блоки</h3>
 
-                    <div className="table-wrapper">
+                    <div className='table-wrapper'>
                         <table>
                             <thead>
                                 <tr>
                                     <th>Блок</th>
-                                    <th className="mobile-hidden">Описание</th>
+                                    <th className='mobile-hidden'>Описание</th>
                                     <th>Цена</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>
-                                        <Link to="/newbie">Начальный</Link>
+                                        <Link to='/newbie'>Начальный</Link>
                                     </td>
-                                    <td className="mobile-hidden">Вводный курс альпинизма</td>
+                                    <td className='mobile-hidden'>Вводный курс альпинизма</td>
                                     <td>7000</td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <Link to="/basement">Базовый</Link>
+                                        <Link to='/basement'>Базовый</Link>
                                     </td>
-                                    <td className="mobile-hidden">Работа в группе</td>
+                                    <td className='mobile-hidden'>Работа в группе</td>
                                     <td>7000</td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <Link to="/advanced">Продвинутый</Link>
+                                        <Link to='/advanced'>Продвинутый</Link>
                                     </td>
-                                    <td className="mobile-hidden">Более сложные технические приемы</td>
+                                    <td className='mobile-hidden'>Более сложные технические приемы</td>
                                     <td>7000</td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <Link to="/snow_and_ice">Снег и лед</Link>
+                                        <Link to='/snow_and_ice'>Снег и лед</Link>
                                     </td>
-                                    <td className="mobile-hidden">Техника передвижения по снегу и льду</td>
+                                    <td className='mobile-hidden'>Техника передвижения по снегу и льду</td>
                                     <td>7000</td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <Link to="/rescue">Спасработы</Link>
+                                        <Link to='/rescue'>Спасработы</Link>
                                     </td>
-                                    <td className="mobile-hidden">Элементы спасательных работ в малой группе</td>
+                                    <td className='mobile-hidden'>Элементы спасательных работ в малой группе</td>
                                     <td>7000</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <br />
-                    <h3 className="major">Занятия проходят на скалодроме 'арена'</h3>
-                    <div className="table-wrapper">
-                        <table className="alt">
+                    <h3 className='major'>Занятия проходят на скалодроме 'арена'</h3>
+                    <div className='table-wrapper'>
+                        <table className='alt'>
                             <tbody>
                                 <tr>
                                     <td>Понеделнк</td>
@@ -138,13 +138,16 @@ export const SchoolPage = () => {
 
                     <br />
 
-                    <h3 className="major">Адрес скалодрома</h3>
-                    <div className="row">
-                        <div className="col-12">
+                    <h3 className='major'>Адрес скалодрома</h3>
+                    <div className='row'>
+                        <div className='col-12'>
                             <ul>
                                 <li>Москва, Смирновская улица, 25 с. 1</li>
                                 <li>
-                                    <a rel="noreferrer" target="_blank" href="https://arenaclimb.ru/">
+                                    <a
+                                        rel='noreferrer'
+                                        target='_blank'
+                                        href='https://arenaclimb.ru/'>
                                         https://arenaclimb.ru/
                                     </a>
                                 </li>

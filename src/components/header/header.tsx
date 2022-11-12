@@ -22,7 +22,10 @@ export const Header = () => {
         }
     }, []);
     return (
-        <header ref={ref} id="header" className="alt">
+        <header
+            ref={ref}
+            id='header'
+            className='alt'>
             <Menu />
         </header>
     );

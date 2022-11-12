@@ -1,17 +1,17 @@
 export const TrainingPage = () => {
     return (
-        <section id="wrapper">
+        <section id='wrapper'>
             <header>
-                <div className="inner">
+                <div className='inner'>
                     <h2>Тренировки</h2>
                 </div>
             </header>
 
-            <div className="wrapper">
-                <div className="inner">
-                    <h3 className="major">Тренируемся на скалодромах Москвы:</h3>
-                    <div className="table-wrapper">
-                        <table className="alt">
+            <div className='wrapper'>
+                <div className='inner'>
+                    <h3 className='major'>Тренируемся на скалодромах Москвы:</h3>
+                    <div className='table-wrapper'>
+                        <table className='alt'>
                             <tbody>
                                 <tr>
                                     <td></td>
@@ -119,16 +119,19 @@ export const TrainingPage = () => {
                         </table>
                     </div>
 
-                    <h3 className="major">Адреса скалодромов</h3>
-                    <div className="row">
-                        <div className="col-12">
+                    <h3 className='major'>Адреса скалодромов</h3>
+                    <div className='row'>
+                        <div className='col-12'>
                             <h4>
                                 <strong>BigWall:</strong>
                             </h4>
                             <ul>
                                 <li>Москва, Проспект Мира, 119 стр. 22</li>
                                 <li>
-                                    <a rel="noreferrer" target="_blank" href="https://bigwallsport.ru/">
+                                    <a
+                                        rel='noreferrer'
+                                        target='_blank'
+                                        href='https://bigwallsport.ru/'>
                                         https://bigwallsport.ru/
                                     </a>
                                 </li>
@@ -139,7 +142,10 @@ export const TrainingPage = () => {
                             <ul>
                                 <li>Москва, Вятская улица, 27, к.12</li>
                                 <li>
-                                    <a rel="noreferrer" target="_blank" href="http://www.redpoint.msk.ru/">
+                                    <a
+                                        rel='noreferrer'
+                                        target='_blank'
+                                        href='http://www.redpoint.msk.ru/'>
                                         http://www.redpoint.msk.ru/
                                     </a>
                                 </li>
@@ -150,7 +156,10 @@ export const TrainingPage = () => {
                             <ul>
                                 <li>Москва, Смирновская улица, 25 стр. 1</li>
                                 <li>
-                                    <a rel="noreferrer" target="_blank" href="https://arenaclimb.ru/">
+                                    <a
+                                        rel='noreferrer'
+                                        target='_blank'
+                                        href='https://arenaclimb.ru/'>
                                         https://arenaclimb.ru/
                                     </a>
                                 </li>
@@ -161,7 +170,10 @@ export const TrainingPage = () => {
                             <ul>
                                 <li>Москва, Дубосековская улица, д. 13</li>
                                 <li>
-                                    <a rel="noreferrer" target="_blank" href="http://www.alpclb.ru/treining.php">
+                                    <a
+                                        rel='noreferrer'
+                                        target='_blank'
+                                        href='http://www.alpclb.ru/treining.php'>
                                         http://www.alpclb.ru/treining.php
                                     </a>
                                 </li>
@@ -171,7 +183,7 @@ export const TrainingPage = () => {
                     <br />
                     <br />
 
-                    <h3 className="major">Присоединяйтесь!</h3>
+                    <h3 className='major'>Присоединяйтесь!</h3>
                     <p>
                         Будем вам рады! Но, пожалуйста, свяжитесь с нами заранее по телефону:{' '}
                         <strong>+7 (926) 677-08-71</strong>

@@ -17,21 +17,54 @@ import { SnowIceBlockPage } from './pages/school-page/snow-ice-block-page/snow-i
 
 function App() {
     return (
-        <div className="App">
+        <div className='App'>
             <Router>
                 <Header />
                 <Routes>
-                    <Route index element={<HomePage />} />
-                    <Route path="/about" element={<AboutPage />} />
-                    <Route path="/training" element={<TrainingPage />} />
-                    <Route path="/travels" element={<TravelsPage />} />
-                    <Route path="/school" element={<SchoolPage />} />
-                    <Route path="/newbie" element={<NewbieBlockPage />} />
-                    <Route path="/basement" element={<BasementBlockPage />} />
-                    <Route path="/advanced" element={<AdvancedBlockPage />} />
-                    <Route path="/snow_and_ice" element={<SnowIceBlockPage />} />
-                    <Route path="/rescue" element={<RescueBlockPage />} />
-                    <Route path="*" element={<HomePage />} />
+                    <Route
+                        index
+                        element={<HomePage />}
+                    />
+                    <Route
+                        path='/about'
+                        element={<AboutPage />}
+                    />
+                    <Route
+                        path='/training'
+                        element={<TrainingPage />}
+                    />
+                    <Route
+                        path='/travels'
+                        element={<TravelsPage />}
+                    />
+                    <Route
+                        path='/school'
+                        element={<SchoolPage />}
+                    />
+                    <Route
+                        path='/newbie'
+                        element={<NewbieBlockPage />}
+                    />
+                    <Route
+                        path='/basement'
+                        element={<BasementBlockPage />}
+                    />
+                    <Route
+                        path='/advanced'
+                        element={<AdvancedBlockPage />}
+                    />
+                    <Route
+                        path='/snow_and_ice'
+                        element={<SnowIceBlockPage />}
+                    />
+                    <Route
+                        path='/rescue'
+                        element={<RescueBlockPage />}
+                    />
+                    <Route
+                        path='*'
+                        element={<HomePage />}
+                    />
                 </Routes>
                 <Footer />
             </Router>

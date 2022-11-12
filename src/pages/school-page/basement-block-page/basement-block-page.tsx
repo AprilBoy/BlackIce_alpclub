@@ -1,15 +1,15 @@
 export const BasementBlockPage = () => {
     return (
-        <section id="wrapper">
+        <section id='wrapper'>
             <header>
-                <div className="inner">
+                <div className='inner'>
                     <h2>Школа Альпинизма</h2>
                     <p>Базовый блок</p>
                 </div>
             </header>
 
-            <div className="wrapper">
-                <div className="inner">
+            <div className='wrapper'>
+                <div className='inner'>
                     <p>
                         Приглашаем на обучение всех, кто мечтает ходить в горы, но не знает с чего начать. Мы
                         подготовили практический курс, состоящий из пяти частей, пройдя которые вы сможете ходить в горы
@@ -26,15 +26,15 @@ export const BasementBlockPage = () => {
                     </p>
 
                     <p>
-                        <a href="https://clc.am/3-6KHw">
+                        <a href='https://clc.am/3-6KHw'>
                             <strong>Регистрация на курс</strong>
                         </a>
                     </p>
 
                     <br />
-                    <h3 className="major">Ближайшие даты:</h3>
-                    <div className="row">
-                        <div className="col-12">
+                    <h3 className='major'>Ближайшие даты:</h3>
+                    <div className='row'>
+                        <div className='col-12'>
                             <ul>
                                 <li>20 ноября 2022</li>
                                 <li>4 декабря 2022</li>
@@ -43,7 +43,7 @@ export const BasementBlockPage = () => {
                         </div>
                     </div>
                     <br />
-                    <h3 className="major">Программа блока</h3>
+                    <h3 className='major'>Программа блока</h3>
 
                     <h4>Занятие 1</h4>
                     <ol>
@@ -76,7 +76,7 @@ export const BasementBlockPage = () => {
                         <li>Прохождение тренировочного маршрута в группе</li>
                     </ol>
                     <br />
-                    <h3 className="major">Возьмите с собой:</h3>
+                    <h3 className='major'>Возьмите с собой:</h3>
                     <ul>
                         <li>Футболка. Учтите, что в холодное время года на скалодроме может быть прохладно</li>
                         <li>Удобные спортивные штаны либо шорты, закрывающие колени</li>

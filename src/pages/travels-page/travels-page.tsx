@@ -1,13 +1,13 @@
 export const TravelsPage = () => {
     return (
-        <section id="wrapper">
+        <section id='wrapper'>
             <header>
-                <div className="inner">
+                <div className='inner'>
                     <h2>АльпСборы</h2>
                 </div>
             </header>
-            <div className="wrapper">
-                <div className="inner">
+            <div className='wrapper'>
+                <div className='inner'>
                     <p>
                         В течение года наш клуб проводит множество выездов в горы. Проводятся учебно-тренировочные сборы
                         с профессиональными инструкторами альпинизма. Спортивные группы совершают восхождения по всем
@@ -18,15 +18,15 @@ export const TravelsPage = () => {
                         если по какой-то причине ссылки на группу VK нет или остались какие-то вопросы, то просто
                         свяжитесь с нами любым удобным для вас способом
                     </p>
-                    <h3 className="major">Поехали с нами</h3>
-                    <div className="row">
-                        <div className="col-12">
+                    <h3 className='major'>Поехали с нами</h3>
+                    <div className='row'>
+                        <div className='col-12'>
                             <h4>2022 год</h4>
                             <ul>
                                 <li>Декабрь – Январь, Новогодние сборы в горах</li>
                             </ul>
                         </div>
-                        <div className="col-12">
+                        <div className='col-12'>
                             <h4>2023 год</h4>
                             <ul>
                                 <li>Март, Альпсборы в Хибинах</li>

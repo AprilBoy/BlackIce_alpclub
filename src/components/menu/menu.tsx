@@ -13,30 +13,36 @@ export const Menu = () => {
         <Fragment>
             {location.pathname !== '/' && (
                 <h1>
-                    <Link to="/">На главную</Link>
+                    <Link to='/'>На главную</Link>
                 </h1>
             )}
             <nav onClick={() => setOpen((o) => !o)}>
-                <span className="menu">Меню</span>
+                <span className='menu'>Меню</span>
             </nav>
-            <Popup open={open} onClose={closeModal} position="center center" modal>
-                <div className="inner">
+            <Popup
+                open={open}
+                onClose={closeModal}
+                position='center center'
+                modal>
+                <div className='inner'>
                     <h2>Меню</h2>
-                    <ul className="links">
+                    <ul className='links'>
                         <li onClick={closeModal}>
-                            <Link to="/">Домой</Link>
+                            <Link to='/'>Домой</Link>
                         </li>
                         <li onClick={closeModal}>
-                            <Link to="/about">О клубе</Link>
+                            <Link to='/about'>О клубе</Link>
                         </li>
                         <li onClick={closeModal}>
-                            <Link to="/training">Тренировки</Link>
+                            <Link to='/training'>Тренировки</Link>
                         </li>
                         <li onClick={closeModal}>
-                            <Link to="/school">Школа альпинизма</Link>
+                            <Link to='/school'>Школа альпинизма</Link>
                         </li>
                     </ul>
-                    <span onClick={() => closeModal()} className="close">
+                    <span
+                        onClick={() => closeModal()}
+                        className='close'>
                         Закрыть
                     </span>
                 </div>
