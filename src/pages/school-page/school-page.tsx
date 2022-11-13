@@ -1,4 +1,4 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const SchoolPage = () => {
     return (
@@ -52,35 +52,35 @@ export const SchoolPage = () => {
                             <tbody>
                                 <tr>
                                     <td>
-                                        <Link to='/newbie'>Начальный</Link>
+                                        <Link to='newbie'>Начальный</Link>
                                     </td>
                                     <td className='mobile-hidden'>Вводный курс альпинизма</td>
                                     <td>7000</td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <Link to='/basement'>Базовый</Link>
+                                        <Link to='basement'>Базовый</Link>
                                     </td>
                                     <td className='mobile-hidden'>Работа в группе</td>
                                     <td>7000</td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <Link to='/advanced'>Продвинутый</Link>
+                                        <Link to='advanced'>Продвинутый</Link>
                                     </td>
                                     <td className='mobile-hidden'>Более сложные технические приемы</td>
                                     <td>7000</td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <Link to='/snow_and_ice'>Снег и лед</Link>
+                                        <Link to='snow_and_ice'>Снег и лед</Link>
                                     </td>
                                     <td className='mobile-hidden'>Техника передвижения по снегу и льду</td>
                                     <td>7000</td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <Link to='/rescue'>Спасработы</Link>
+                                        <Link to='rescue'>Спасработы</Link>
                                     </td>
                                     <td className='mobile-hidden'>Элементы спасательных работ в малой группе</td>
                                     <td>7000</td>
@@ -156,7 +156,6 @@ export const SchoolPage = () => {
                     </div>
                 </div>
             </div>
-            <Outlet />
         </section>
     );
 };

@@ -1,0 +1,22 @@
+.scroll-to-top {
+    cursor: pointer;
+    z-index: 9999;
+    position: fixed;
+    bottom: 10%;
+    right: 1%;
+
+    span:before {
+        transition: background-color 0.2s ease-in-out;
+        border-radius: 100%;
+        border: solid 2px #000000;
+        display: inline-block;
+        font-size: 1.25em;
+        height: 2em;
+        line-height: 1.75em;
+        margin-right: 0.85em;
+        text-align: center;
+        vertical-align: middle;
+        width: 2em;
+        display: block;
+    }
+}

@@ -33,7 +33,9 @@
     border: none;
     -webkit-animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
 }
-
+.popup-overlay {
+    background: rgba(0, 0, 0, 0.5);
+}
 .popup-content .inner {
     padding: 2.5em 1.5em 0.5em 1.5em;
     -webkit-overflow-scrolling: touch;
@@ -51,6 +53,7 @@
 }
 
 .popup-content .close {
+    cursor: pointer;
     background-image: url('../../assets/images/close.svg');
     background-position: 75% 25%;
     background-repeat: no-repeat;

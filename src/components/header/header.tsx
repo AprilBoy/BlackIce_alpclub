@@ -7,17 +7,17 @@ export const Header = () => {
     useEffect(() => {
         const element: HTMLElement = ref.current!;
         if (element) {
-            const handleClick = (event: Event) => {
+            const handleScroll = (event: Event) => {
                 if (window.scrollY > 50) {
                     element.classList.remove('alt');
                 } else {
                     element.classList.add('alt');
                 }
             };
-            document.addEventListener('scroll', handleClick);
+            document.addEventListener('scroll', handleScroll);
 
             return () => {
-                document.removeEventListener('scroll', handleClick);
+                document.removeEventListener('scroll', handleScroll);
             };
         }
     }, []);

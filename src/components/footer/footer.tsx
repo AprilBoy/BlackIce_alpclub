@@ -8,7 +8,9 @@ export const Footer = () => {
                 <h2 className='major'>Всегда на связи</h2>
                 <p>По любым вопросам вы можете нам написать или позвонить. Мы ответим. Всегда.</p>
                 <ul className='contact'>
-                    <li className='icon solid fa-phone'>+7 (926) 677-08-71</li>
+                    <li className='icon solid fa-phone'>
+                        <a href='tel:+79266770871'>+7 (926) 677-08-71</a>
+                    </li>
                     <li className='icon solid fa-envelope'>
                         <a
                             target='_blank'
@@ -42,9 +44,8 @@ export const Footer = () => {
                         </a>
                     </li>
                 </ul>
-                <div className='copyright flex'>
+                <div className='copyright'>
                     <a
-                        className='flex'
                         target='_blank'
                         href='https://github.com/AprilBoy'
                         rel='noreferrer'>

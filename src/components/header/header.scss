@@ -31,6 +31,11 @@
 #header h1 a {
     border: 0;
 }
+#header h1 span {
+    border: 0;
+    font-weight: 700;
+    cursor: pointer;
+}
 
 #header nav {
     cursor: pointer;

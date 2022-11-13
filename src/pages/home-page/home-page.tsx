@@ -15,8 +15,8 @@ export const HomePage = () => {
                         <img
                             className='logo'
                             src={Black_Ice}
-                            width='450px'
-                            height='266px'
+                            width='60%'
+                            height='60%'
                             alt='Black_Ice'
                         />
                     </picture>
