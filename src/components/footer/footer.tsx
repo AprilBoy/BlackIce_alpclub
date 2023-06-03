@@ -6,7 +6,7 @@ export const Footer = () => {
         <footer id='footer'>
             <div className='inner'>
                 <h2 className='major'>Всегда на связи</h2>
-                <p>По любым вопросам вы можете нам написать или позвонить. Мы ответим. Всегда.</p>
+                <p>По любым вопросам вы можете нам написать или позвонить</p>
                 <ul className='contact'>
                     <li className='icon solid fa-phone'>
                         <a href='tel:+79266770871'>+7 (926) 677-08-71</a>

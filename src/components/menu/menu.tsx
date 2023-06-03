@@ -12,7 +12,6 @@ export const Menu = () => {
     const closeModal = () => ref.current.close();
 
     useEffect(() => {
-        console.log(location);
         document.body.style.overflow = isClosed ? 'unset' : 'hidden';
     });
 

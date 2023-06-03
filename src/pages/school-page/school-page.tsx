@@ -31,9 +31,8 @@ export const SchoolPage = () => {
                     <div className='row'>
                         <div className='col-12'>
                             <ul>
-                                <li>20 ноября 2022</li>
-                                <li>4 декабря 2022</li>
-                                <li>18 декабря 2022</li>
+                                <li>7 августа 2023</li>
+                                <li>21 августа 2023</li>
                             </ul>
                         </div>
                     </div>
