@@ -18,9 +18,12 @@ import { ScrollTopHelper } from './components/helpers/scroll-top-helper';
 import { ScrollToTop } from './components/scroll-top/scroll-top';
 
 function App() {
+    // Get basename from PUBLIC_URL for GitHub Pages support
+    const basename = process.env.PUBLIC_URL || '';
+    
     return (
         <div className='App'>
-            <Router>
+            <Router basename={basename}>
                 <ScrollTopHelper />
                 <ScrollToTop />
                 <Header />

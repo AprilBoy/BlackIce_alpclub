@@ -2,6 +2,7 @@
   "name": "blackice-react",
   "version": "1.0",
   "private": true,
+  "homepage": "https://aprilboy.github.io/BlackIce_alpclub",
   "scripts": {
     "prettier-write": "prettier --write ./src",
     "prettier-check": "npx prettier --check ./src",
@@ -9,7 +10,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -33,6 +36,7 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "gh-pages": "^6.1.0",
     "husky": "^8.0.2",
     "prettier": "^2.7.1",
     "pretty-quick": "^3.1.3"
