@@ -10,12 +10,6 @@ COPY package.json package-lock.json ./
 # Install all dependencies (including dev dependencies for building)
 RUN npm install
 
-# Verify react-scripts is available
-RUN echo "Checking react-scripts..." && npx react-scripts --version
-
-# List installed packages
-RUN npm list react-scripts
-
 # Copy source code
 COPY . .
 

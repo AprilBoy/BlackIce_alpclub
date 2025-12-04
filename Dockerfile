@@ -14,12 +14,6 @@ ENV CACHE_BUST=$CACHE_BUST
 # Install all dependencies (including dev dependencies for building)
 RUN npm install
 
-# Verify react-scripts is available
-RUN echo "Checking react-scripts..." && npx react-scripts --version
-
-# List installed packages to verify react-scripts
-RUN npm list react-scripts
-
 # Copy source code
 COPY . .
 
@@ -30,7 +24,7 @@ RUN echo "Starting build..." && npm run build
 FROM nginx:alpine
 
 # Copy built application from builder stage
-COPY --from=builder /app/build /usr/share/nginx/html
+COPY --from=builder /app/dist /usr/share/nginx/html
 
 # Copy custom nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
