@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  blackice-app:
+    build: .
+    container_name: blackice-app
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    networks:
+      - blackice-network
+
+networks:
+  blackice-network:
+    driver: bridge
