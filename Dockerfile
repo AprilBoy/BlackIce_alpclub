@@ -5,10 +5,14 @@ FROM node:18-alpine AS builder
 WORKDIR /app
 
 # Copy package files
-COPY package*.json ./
+COPY package*.json package-lock.json* ./
+
+# Add a timestamp to invalidate cache when needed
+ARG CACHE_BUST
+ENV CACHE_BUST=$CACHE_BUST
 
 # Install all dependencies (including dev dependencies for building)
-RUN npm ci
+RUN npm ci --include=dev
 
 # Copy source code
 COPY . .

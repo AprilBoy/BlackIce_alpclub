@@ -50,8 +50,13 @@ cd BlackIce_alpclub
 Скрипт `deploy.sh` предоставляет следующие команды:
 
 ```bash
-# Полное развертывание с Docker сборкой (рекомендуется)
+# Полное развертывание (рекомендуется)
 ./deploy.sh deploy
+
+# Тестирование Docker сборки (без развертывания)
+./deploy.sh test-build
+# или используйте отдельный скрипт:
+./test-build.sh
 
 # Полное развертывание с локальной + Docker сборкой
 ./deploy.sh deploy-full
@@ -197,6 +202,34 @@ NODE_ENV=production
 ```
 
 ## Troubleshooting
+
+### Проблемы со сборкой Docker
+
+#### Ошибка "react-scripts: not found"
+
+```bash
+# Очистите Docker кэш и пересоберите
+./deploy.sh cleanup
+./deploy.sh deploy
+
+# Или протестируйте сборку отдельно
+./test-build.sh
+
+# Проверьте логи сборки
+docker build --no-cache --progress=plain -t blackice-debug .
+```
+
+#### Ошибка "Build failed"
+
+```bash
+# Проверьте, что все зависимости указаны в package.json
+npm install
+npm run build
+
+# Если проблема в Docker, попробуйте:
+docker system prune -f
+./deploy.sh deploy
+```
 
 ### Приложение не запускается
 

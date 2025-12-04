@@ -48,6 +48,12 @@ build_app() {
         return 0
     fi
 
+    log_info "Cleaning previous build..."
+    rm -rf build
+
+    log_info "Installing dependencies..."
+    npm ci --include=dev
+
     log_info "Building React application locally..."
     npm run build
 
@@ -62,7 +68,7 @@ build_app() {
 # Build Docker image
 build_docker() {
     log_info "Building Docker image..."
-    docker-compose build --no-cache
+    docker-compose build --no-cache --pull --build-arg CACHE_BUST=$(date +%s)
 
     if [ $? -eq 0 ]; then
         log_info "Docker build completed successfully"
@@ -183,6 +189,11 @@ main() {
         "cleanup")
             cleanup
             ;;
+        "test-build")
+            log_info "Testing Docker build..."
+            docker build --no-cache --build-arg CACHE_BUST=$(date +%s) -t blackice-test .
+            ;;
+        *)
         *)
             echo "Usage: $0 [build|build-local|build-docker|deploy|deploy-full|restart|stop|logs|status|cleanup]"
             echo ""
@@ -196,6 +207,7 @@ main() {
             echo "  stop           - Stop running containers"
             echo "  logs           - Show application logs"
             echo "  status         - Show container status"
+            echo "  test-build     - Test Docker build without deployment"
             echo "  cleanup        - Clean up Docker resources"
             exit 1
             ;;
