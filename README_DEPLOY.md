@@ -110,32 +110,110 @@ docker-compose down
 
 ## Настройка домена и SSL
 
-### С Nginx Proxy Manager (рекомендуется)
+Приложение теперь поддерживает HTTPS с автоматическим редиректом HTTP на HTTPS.
 
-1. Установите Nginx Proxy Manager
-2. Добавьте прокси-хост для вашего домена
-3. Укажите внутренний IP:80
-4. Включите SSL Let's Encrypt
+### Быстрая настройка SSL (рекомендуется для тестирования)
 
-### С Certbot (для standalone развертывания)
+1. **Сгенерируйте self-signed сертификаты:**
+   ```bash
+   ./generate-ssl.sh
+   # или для конкретного домена:
+   ./generate-ssl.sh yourdomain.com
+   ```
+
+2. **Запустите приложение:**
+   ```bash
+   ./deploy.sh deploy
+   ```
+
+3. **Приложение будет доступно по HTTPS:**
+   - HTTP: `http://localhost` (автоматически редиректируется на HTTPS)
+   - HTTPS: `https://localhost`
+
+### Настройка SSL для продакшена
+
+#### Вариант 1: Let's Encrypt с Certbot (автоматический)
+
+1. **Установите certbot:**
+   ```bash
+   sudo apt update
+   sudo apt install certbot
+   ```
+
+2. **Получите SSL сертификат:**
+   ```bash
+   sudo certbot certonly --standalone -d yourdomain.com
+   ```
+
+3. **Настройте приложение:**
+   ```bash
+   # Создайте символические ссылки на сертификаты Let's Encrypt
+   mkdir -p ssl/certs ssl/private
+   sudo cp /etc/letsencrypt/live/yourdomain.com/fullchain.pem ssl/certs/ssl-cert-snakeoil.pem
+   sudo cp /etc/letsencrypt/live/yourdomain.com/privkey.pem ssl/private/ssl-cert-snakeoil.key
+
+   # Или создайте символические ссылки
+   # sudo ln -sf /etc/letsencrypt/live/yourdomain.com/fullchain.pem ssl/certs/ssl-cert-snakeoil.pem
+   # sudo ln -sf /etc/letsencrypt/live/yourdomain.com/privkey.pem ssl/private/ssl-cert-snakeoil.key
+   ```
+
+4. **Запустите приложение:**
+   ```bash
+   ./deploy.sh deploy
+   ```
+
+#### Вариант 2: Nginx Proxy Manager (рекомендуется)
+
+1. **Установите Nginx Proxy Manager**
+2. **Добавьте прокси-хост:**
+   - Domain: `yourdomain.com`
+   - Forward Hostname/IP: `your-server-ip`
+   - Forward Port: `80`
+3. **Включите SSL Let's Encrypt** в настройках прокси-хоста
+
+#### Вариант 3: Ручная настройка сертификатов
+
+1. **Поместите сертификаты в директории:**
+   ```
+   ssl/certs/ssl-cert-snakeoil.pem      # Ваш SSL сертификат
+   ssl/private/ssl-cert-snakeoil.key     # Ваш приватный ключ
+   ```
+
+2. **Установите правильные права:**
+   ```bash
+   chmod 644 ssl/certs/ssl-cert-snakeoil.pem
+   chmod 600 ssl/private/ssl-cert-snakeoil.key
+   ```
+
+3. **Docker автоматически смонтирует сертификаты из директории `ssl/` в контейнер**
+
+3. **Запустите приложение:**
+   ```bash
+   ./deploy.sh deploy
+   ```
+
+### Автоматическое обновление сертификатов
+
+Для автоматического обновления сертификатов Let's Encrypt добавьте в crontab:
 
 ```bash
-# Установите certbot
-sudo apt install certbot
+# Ежемесячно обновлять сертификаты
+0 12 1 * * /usr/bin/certbot renew --quiet && docker-compose restart blackice-app
+```
 
-# Получите SSL сертификат
-sudo certbot certonly --standalone -d yourdomain.com
+### Проверка SSL
 
-# Добавьте HTTPS в docker-compose.yml
-version: '3.8'
-services:
-  blackice-app:
-    # ... существующие настройки
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - /etc/letsencrypt:/etc/letsencrypt:ro
+Проверьте настройку SSL:
+
+```bash
+# Проверьте доступность HTTPS
+curl -I https://yourdomain.com
+
+# Проверьте редирект HTTP на HTTPS
+curl -I http://yourdomain.com
+
+# Используйте SSL тестер
+openssl s_client -connect yourdomain.com:443 -servername yourdomain.com
 ```
 
 ## Мониторинг и обслуживание
