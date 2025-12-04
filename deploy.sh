@@ -39,15 +39,22 @@ check_docker() {
     fi
 }
 
-# Build the application
+# Build the application (local build - optional, Docker build is preferred)
 build_app() {
-    log_info "Building React application..."
+    log_info "Checking for Node.js and npm..."
+    if ! command -v node &> /dev/null || ! command -v npm &> /dev/null; then
+        log_warn "Node.js or npm not found. Skipping local build (Docker build will handle this)."
+        log_info "If you want to build locally, install Node.js and npm first."
+        return 0
+    fi
+
+    log_info "Building React application locally..."
     npm run build
 
     if [ $? -eq 0 ]; then
-        log_info "Build completed successfully"
+        log_info "Local build completed successfully"
     else
-        log_error "Build failed"
+        log_error "Local build failed"
         exit 1
     fi
 }
@@ -146,7 +153,17 @@ main() {
             build_app
             build_docker
             ;;
+        "build-local")
+            build_app
+            ;;
+        "build-docker")
+            build_docker
+            ;;
         "deploy")
+            build_docker
+            deploy_app
+            ;;
+        "deploy-full")
             build_app
             build_docker
             deploy_app
@@ -167,16 +184,19 @@ main() {
             cleanup
             ;;
         *)
-            echo "Usage: $0 [build|deploy|restart|stop|logs|status|cleanup]"
+            echo "Usage: $0 [build|build-local|build-docker|deploy|deploy-full|restart|stop|logs|status|cleanup]"
             echo ""
             echo "Commands:"
-            echo "  build    - Build React app and Docker image"
-            echo "  deploy   - Full deployment (build + deploy)"
-            echo "  restart  - Restart running containers"
-            echo "  stop     - Stop running containers"
-            echo "  logs     - Show application logs"
-            echo "  status   - Show container status"
-            echo "  cleanup  - Clean up Docker resources"
+            echo "  build          - Build React app locally + Docker image"
+            echo "  build-local    - Build React app locally only"
+            echo "  build-docker   - Build Docker image only"
+            echo "  deploy         - Full deployment with Docker build (recommended)"
+            echo "  deploy-full    - Full deployment with local + Docker build"
+            echo "  restart        - Restart running containers"
+            echo "  stop           - Stop running containers"
+            echo "  logs           - Show application logs"
+            echo "  status         - Show container status"
+            echo "  cleanup        - Clean up Docker resources"
             exit 1
             ;;
     esac
