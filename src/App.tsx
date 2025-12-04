@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Header } from './components/header/header';
 import { Footer } from './components/footer/footer';
 
@@ -18,12 +16,12 @@ import { ScrollTopHelper } from './components/helpers/scroll-top-helper';
 import { ScrollToTop } from './components/scroll-top/scroll-top';
 
 function App() {
-    // Get basename from PUBLIC_URL for GitHub Pages support
-    const basename = process.env.PUBLIC_URL || '';
+    // Get basename from Vite base config for GitHub Pages support
+    const basename = (import.meta as any).env.BASE_URL || '';
     
     return (
         <div className='App'>
-            <Router basename={basename}>
+            <Router basename={basename} future={{ v7_startTransition: true }}>
                 <ScrollTopHelper />
                 <ScrollToTop />
                 <Header />
