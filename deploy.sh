@@ -194,7 +194,6 @@ main() {
             docker build --no-cache --build-arg CACHE_BUST=$(date +%s) -t blackice-test .
             ;;
         *)
-        *)
             echo "Usage: $0 [build|build-local|build-docker|deploy|deploy-full|restart|stop|logs|status|cleanup]"
             echo ""
             echo "Commands:"
