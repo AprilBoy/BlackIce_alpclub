@@ -212,8 +212,15 @@ NODE_ENV=production
 ./deploy.sh cleanup
 ./deploy.sh deploy
 
-# Или протестируйте сборку отдельно
-./test-build.sh
+# Используйте отладочную сборку для диагностики
+./deploy.sh debug-build
+
+# Запустите интерактивный контейнер для проверки
+docker run -it blackice-debug sh
+
+# В контейнере проверьте:
+npm list react-scripts
+npx react-scripts --version
 
 # Проверьте логи сборки
 docker build --no-cache --progress=plain -t blackice-debug .

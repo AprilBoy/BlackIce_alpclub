@@ -5,20 +5,26 @@ FROM node:18-alpine AS builder
 WORKDIR /app
 
 # Copy package files
-COPY package*.json package-lock.json* ./
+COPY package.json package-lock.json ./
 
 # Add a timestamp to invalidate cache when needed
 ARG CACHE_BUST
 ENV CACHE_BUST=$CACHE_BUST
 
 # Install all dependencies (including dev dependencies for building)
-RUN npm ci --include=dev
+RUN npm install
+
+# Verify react-scripts is available
+RUN echo "Checking react-scripts..." && npx react-scripts --version
+
+# List installed packages to verify react-scripts
+RUN npm list react-scripts
 
 # Copy source code
 COPY . .
 
 # Build the application
-RUN npm run build
+RUN echo "Starting build..." && npm run build
 
 # Production stage
 FROM nginx:alpine

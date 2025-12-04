@@ -33,10 +33,17 @@ check_docker() {
         exit 1
     fi
 
-    if ! command -v docker-compose &> /dev/null; then
+    # Check for docker-compose (legacy) or docker compose (new)
+    if command -v docker-compose &> /dev/null; then
+        DOCKER_COMPOSE_CMD="docker-compose"
+    elif docker compose version &> /dev/null; then
+        DOCKER_COMPOSE_CMD="docker compose"
+    else
         log_error "Docker Compose is not installed. Please install Docker Compose first."
         exit 1
     fi
+
+    log_info "Using Docker Compose command: $DOCKER_COMPOSE_CMD"
 }
 
 # Build the application (local build - optional, Docker build is preferred)
@@ -68,7 +75,7 @@ build_app() {
 # Build Docker image
 build_docker() {
     log_info "Building Docker image..."
-    docker-compose build --no-cache --pull --build-arg CACHE_BUST=$(date +%s)
+    $DOCKER_COMPOSE_CMD build --no-cache --pull --build-arg CACHE_BUST=$(date +%s)
 
     if [ $? -eq 0 ]; then
         log_info "Docker build completed successfully"
@@ -84,7 +91,7 @@ deploy_app() {
 
     # Stop existing containers
     log_info "Stopping existing containers..."
-    docker-compose down || true
+    $DOCKER_COMPOSE_CMD down || true
 
     # Remove old images (optional, uncomment if needed)
     # log_info "Removing old images..."
@@ -92,12 +99,12 @@ deploy_app() {
 
     # Start new containers
     log_info "Starting new containers..."
-    docker-compose up -d
+    $DOCKER_COMPOSE_CMD up -d
 
     if [ $? -eq 0 ]; then
         log_info "Deployment completed successfully"
         log_info "Application is running on http://localhost"
-        log_info "Check logs with: docker-compose logs -f"
+        log_info "Check logs with: $DOCKER_COMPOSE_CMD logs -f"
     else
         log_error "Deployment failed"
         exit 1
@@ -107,7 +114,7 @@ deploy_app() {
 # Restart application
 restart_app() {
     log_info "Restarting application..."
-    docker-compose restart
+    $DOCKER_COMPOSE_CMD restart
 
     if [ $? -eq 0 ]; then
         log_info "Application restarted successfully"
@@ -120,7 +127,7 @@ restart_app() {
 # Stop application
 stop_app() {
     log_info "Stopping application..."
-    docker-compose down
+    $DOCKER_COMPOSE_CMD down
 
     if [ $? -eq 0 ]; then
         log_info "Application stopped successfully"
@@ -133,19 +140,19 @@ stop_app() {
 # Show logs
 show_logs() {
     log_info "Showing application logs..."
-    docker-compose logs -f
+    $DOCKER_COMPOSE_CMD logs -f
 }
 
 # Show status
 show_status() {
     log_info "Application status:"
-    docker-compose ps
+    $DOCKER_COMPOSE_CMD ps
 }
 
 # Clean up
 cleanup() {
     log_warn "Cleaning up Docker resources..."
-    docker-compose down --volumes --remove-orphans
+    $DOCKER_COMPOSE_CMD down --volumes --remove-orphans
     docker system prune -f
     log_info "Cleanup completed"
 }
@@ -193,8 +200,13 @@ main() {
             log_info "Testing Docker build..."
             docker build --no-cache --build-arg CACHE_BUST=$(date +%s) -t blackice-test .
             ;;
+        "debug-build")
+            log_info "Testing Docker build with debug Dockerfile..."
+            docker build --no-cache --build-arg CACHE_BUST=$(date +%s) -f Dockerfile.debug -t blackice-debug .
+            log_info "Debug container built. Run with: docker run -it blackice-debug"
+            ;;
         *)
-            echo "Usage: $0 [build|build-local|build-docker|deploy|deploy-full|restart|stop|logs|status|cleanup]"
+            echo "Usage: $0 [build|build-local|build-docker|deploy|deploy-full|restart|stop|logs|status|cleanup|test-build|debug-build]"
             echo ""
             echo "Commands:"
             echo "  build          - Build React app locally + Docker image"
@@ -207,6 +219,7 @@ main() {
             echo "  logs           - Show application logs"
             echo "  status         - Show container status"
             echo "  test-build     - Test Docker build without deployment"
+            echo "  debug-build    - Test build with debug Dockerfile for troubleshooting"
             echo "  cleanup        - Clean up Docker resources"
             exit 1
             ;;
