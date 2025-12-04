@@ -1,13 +1,13 @@
 # BlackIce Alpclub - Deployment Guide
 
-Этот документ содержит инструкции по развертыванию React приложения BlackIce Alpclub на Linux сервере.
+Этот документ содержит инструкции по развертыванию React приложения BlackIce Alpclub (собранного с Vite) на Linux сервере.
 
 ## Системные требования
 
 - Linux 6.8.0-55-generic x86_64
 - Docker (рекомендуется версия 20.10+)
 - Docker Compose (рекомендуется версия 2.0+)
-- Node.js 18+ (для локальной разработки)
+- Node.js 18+ (для локальной разработки, версия 18-alpine используется в Docker)
 - Минимум 1GB RAM
 - Минимум 2GB свободного места на диске
 
@@ -205,7 +205,7 @@ NODE_ENV=production
 
 ### Проблемы со сборкой Docker
 
-#### Ошибка "react-scripts: not found"
+#### Ошибка "vite: command not found" или проблемы с зависимостями
 
 ```bash
 # Очистите Docker кэш и пересоберите
@@ -219,8 +219,8 @@ NODE_ENV=production
 docker run -it blackice-debug sh
 
 # В контейнере проверьте:
-npm list react-scripts
-npx react-scripts --version
+npm list vite
+npx vite --version
 
 # Проверьте логи сборки
 docker build --no-cache --progress=plain -t blackice-debug .
